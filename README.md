@@ -1,29 +1,26 @@
 # 🛡 XSS Vulnerable App: Guide d'Exploitation
 
-Ce projet est une application web volontairement vulnérable aux attaques XSS (Cross-Site Scripting) permettant aux étudiants d’expérimenter et de comprendre ces vulnérabilités.
-
-> **⚠️ Avertissement** : **Ce projet est strictement éducatif.** N’utilisez pas ces techniques en dehors d’un environnement contrôlé.
+Ce projet est une application web volontairement vulnérable aux attaques XSS (Cross-Site Scripting) permettant d’expérimenter et de comprendre ses vulnérabilités.
 
 ---
 
-## 📌 Prérequis
+## Prérequis
 
 ### 🔹 **Outils nécessaires**
 - **Docker** (Vérifiez l’installation avec `docker --version`).
 - **Navigateur Web** (Chrome, Firefox, etc.).
-- **Connaissance en HTML/JS** (base recommandée).
 
 ---
 
-## 🚀 Installation et Lancement
+## Installation et Lancement
 
-1️⃣ **Cloner le projet**  
+1️⃣ **Cloner le projetn et accéder au dossier du projet**  
 ```sh
 git clone https://github.com/zakisfa/xss-vulnerable-app.git
 cd xss-vulnerable-app
 ```
 
-2️⃣ **Construire l’image Docker**  
+2️⃣ **Construire l’image Docker avec la commande suivante**  
 ```sh
 docker build -t xss-vulnerable-app .
 ```
@@ -40,48 +37,49 @@ http://localhost:8080
 
 ---
 
-## 🔥 Scénarios d’attaque XSS
-
-### 1️⃣ **Injection XSS via Pop-up**
-#### 📝 Description :
+## Scénarios d’attaque XSS
+Une fois connecté a l'application vous serez sur l'index de l'application, il y a 3 scénarios possibles d'injections.
+Faites les dans l'ordre.
+### **Injection XSS via Pop-up**
+#### Description :
 Ce scénario illustre comment injecter un script malveillant qui déclenche une **alerte** sur le navigateur.
 
-#### 🎯 Objectif :
+#### Objectif :
 - Injecter un script dans le champ pour **afficher un pop-up**.
 
-#### ✅ Solution :
+#### Solution :
 Saisissez cette **payload XSS** et validez le formulaire :
 ```html
 <script>alert('XSS réussie!');</script>
 ```
-💡 **Impact** : Un attaquant peut injecter du JavaScript et exécuter du code arbitraire.
+**Impact** : Un attaquant peut injecter du JavaScript et exécuter du code arbitraire.
 
 ---
 
-### 2️⃣ **XSS via Insertion de Lien Malveillant**
-#### 📝 Description :
+### **XSS via Insertion de Lien Malveillant**
+#### Description :
 L’objectif est de **piéger** un utilisateur en lui faisant cliquer sur un **lien injecté** dans un commentaire.
 
-#### 🎯 Objectif :
+#### Objectif :
 - Insérer un lien malveillant dans un champ commentaire.
 
-#### ✅ Solution :
+#### Solution :
 Saisissez cette **payload XSS** et validez le formulaire :
 ```html
 <a href="https://google.com" target="_blank">Cliquez ici</a>
 ```
-💡 **Impact** : Un attaquant peut rediriger un utilisateur vers un **site malveillant**.
+ **Impact** : Un attaquant peut rediriger un utilisateur vers un **site malveillant**.
 
 ---
 
 ### 3️⃣ **XSS via DOM Manipulation**
-#### 📝 Description :
+#### Description :
 Ce scénario montre comment le JavaScript d’une page peut être manipulé dynamiquement sans interaction serveur.
 
-#### 🎯 Objectif :
+#### Objectif :
 - Exploiter une injection pour **modifier le DOM**.
 
-#### ✅ Solution :
+#### Solution :
 1. Dans le champ, injecter l'un des scripts suivants :
    
    **Modifier le titre de la page** :
@@ -121,19 +119,19 @@ Ce scénario montre comment le JavaScript d’une page peut être manipulé dyna
 
 2. Valider le formulaire et observer le changement sur la page.
 
-📌 **Impact** : Un attaquant peut modifier le contenu affiché, afficher des messages trompeurs, et perturber la navigation.
+**Impact** : Un attaquant peut modifier le contenu affiché, afficher des messages trompeurs, et perturber la navigation.
 
 ---
 
-## 🛡 Comment Se Protéger ?
-✅ **Éviter d’afficher directement les entrées utilisateur** (utiliser `htmlspecialchars()`).  
-✅ **Implémenter un Content Security Policy (CSP)**.  
-✅ **Échapper systématiquement** les entrées dans le DOM (`innerText` au lieu de `innerHTML`).  
-✅ **Filtrer les entrées utilisateurs** côté serveur.
+## Comment Se Protéger ?
+ **Éviter d’afficher directement les entrées utilisateur** (utiliser `htmlspecialchars()`).  
+ **Implémenter un Content Security Policy (CSP)**.  
+ **Échapper systématiquement** les entrées dans le DOM (`innerText` au lieu de `innerHTML`).  
+ **Filtrer les entrées utilisateurs** côté serveur.
 
 ---
 
-## 🐝 Disclaimer
+## Disclaimer
 
 **Ce projet est destiné à l’éducation uniquement.** 
 
