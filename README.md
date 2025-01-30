@@ -14,7 +14,7 @@ Ce projet est une application web volontairement vulnérable aux attaques XSS (C
 
 ## Installation et Lancement
 
-**Cloner le projetn et accéder au dossier du projet**  
+**Cloner le projet et accéder au dossier du projet**  
 ```sh
 git clone https://github.com/zakisfa/xss-vulnerable-app.git
 cd xss-vulnerable-app
@@ -30,7 +30,7 @@ docker build -t xss-vulnerable-app .
 docker run -d -p 8080:80 xss-vulnerable-app
 ```
 
-**Accéder à l'application**  
+**Accéder à l'application depuis un navigateur web avec le lien suivant**  
 ```sh
 http://localhost:8080
 ```
