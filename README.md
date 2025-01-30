@@ -1,4 +1,4 @@
-# 🛡 XSS Vulnerable App: Guide d'Exploitation
+# XSS Vulnerable App: Guide d'Exploitation
 
 Ce projet est une application web volontairement vulnérable aux attaques XSS (Cross-Site Scripting) permettant d’expérimenter et de comprendre ses vulnérabilités.
 
@@ -9,28 +9,28 @@ Ce projet est une application web volontairement vulnérable aux attaques XSS (C
 ### 🔹 **Outils nécessaires**
 - **Docker** (Vérifiez l’installation avec `docker --version`).
 - **Navigateur Web** (Chrome, Firefox, etc.).
-
+- **Git** afin de cloner le dépôt.
 ---
 
 ## Installation et Lancement
 
-1️⃣ **Cloner le projetn et accéder au dossier du projet**  
+**Cloner le projetn et accéder au dossier du projet**  
 ```sh
 git clone https://github.com/zakisfa/xss-vulnerable-app.git
 cd xss-vulnerable-app
 ```
 
-2️⃣ **Construire l’image Docker avec la commande suivante**  
+**Construire l’image Docker avec la commande suivante**  
 ```sh
 docker build -t xss-vulnerable-app .
 ```
 
-3️⃣ **Exécuter le conteneur**  
+**Exécuter le conteneur**  
 ```sh
 docker run -d -p 8080:80 xss-vulnerable-app
 ```
 
-4️⃣ **Accéder à l'application**  
+**Accéder à l'application**  
 ```sh
 http://localhost:8080
 ```
@@ -72,7 +72,7 @@ Saisissez cette **payload XSS** et validez le formulaire :
 
 ---
 
-### 3️⃣ **XSS via DOM Manipulation**
+### **XSS via DOM Manipulation**
 #### Description :
 Ce scénario montre comment le JavaScript d’une page peut être manipulé dynamiquement sans interaction serveur.
 
