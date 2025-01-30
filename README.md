@@ -19,7 +19,7 @@ Ce projet est une application web volontairement vulnérable aux attaques XSS (C
 
 1️⃣ **Cloner le projet**  
 ```sh
-git clone https://github.com/votre-repo/xss-vulnerable-app.git
+git clone https://github.com/zakisfa/xss-vulnerable-app.git
 cd xss-vulnerable-app
 ```
 
